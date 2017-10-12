@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>推表</title>
+</head>
+<body>
+    <form action="${pageContext.request.contextPath}/push" method="post">
+
+    <br>选择版本：<br>
+       <label> <input name="version" type="radio" value="develop"/> develop </label>
+        <label> <input name="version" type="radio" value="dev_1.6.0"/> dev_1.6.0 </label>
+       <br>
+    <input type="submit" value="推表"><br>
+    </form>	 
+</body>
+</html>

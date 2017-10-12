@@ -1,0 +1,13 @@
+exceldirectory = /Applications/\u7B56\u5316\u76EE\u5F55/\u914D\u7F6E\u8868/\u7B56\u5212\u7528\u914D\u7F6E\u8868
+
+templatesdb.name=db_templates_luzj_001
+templatesdb.host=192.168.1.121
+templatesdb.port=3306
+templatesdb.user=root
+templatesdb.password=sangoroot!@#
+
+#templatesdb.name=db_templates_luzj_001
+#templatesdb.host=127.0.0.1
+#templatesdb.port=3306
+#templatesdb.user=root
+#templatesdb.password=root
