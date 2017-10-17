@@ -29,19 +29,17 @@ public class SelectExcel {
 	@RequestMapping(value = "push", method = RequestMethod.POST)
 	public synchronized String UploadSourceFile(Model model,String version) throws IOException, SQLException, GitAPIException {
 		System.out.println(version);
-//		try {
-//			Thread.sleep(10000);
-//		} catch (InterruptedException e1) {
-//			e1.printStackTrace();
-//		}
-		
+		if(version.equals("")) {
+			System.out.println("版本为空");
+			return "error";
+		}
 		upResource.svnCheckOut(version);
 		File file = new File(PropertiesFile.getInstance().getProperty("gitAddress"));
 		if(!file.exists()) {
 			System.out.println(file.getAbsolutePath()+"不存在");
 			return "error";
 		}
-		GitCommand gitCommand = new GitCommand();
+		GitCommand gitCommand = GitCommand.getInstance();
 		
 		gitCommand.gitCheckout(file,version);
 	
@@ -49,7 +47,7 @@ public class SelectExcel {
 		gitCommand.gitPull(file);
 		System.out.println("生成文件*******"+ file.getAbsolutePath());
 		String[] args = { PropertiesFile.getInstance().getProperty("gitAddress") };
-		Transfer.exce(args);
+		Transfer.exce(args,version);
 		
 		
 		try {

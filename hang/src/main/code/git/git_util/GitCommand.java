@@ -18,17 +18,17 @@ public class GitCommand {
 
 	private final String USR = "zhangyuhang";
 	private final String PASSWORD = "yuhang1994.1118";
-//	private static GitCommand instance = null;
+	private static GitCommand instance = null;
 	private  UsernamePasswordCredentialsProvider usernamePasswordCredentialsProvider;
 
-//	public static synchronized GitCommand getInstance() {
-//		if (instance == null) {
-//			instance = new GitCommand();
-//		}
-//		return instance;
-//	}
+	public static synchronized GitCommand getInstance() {
+		if (instance == null) {
+			instance = new GitCommand();
+		}
+		return instance;
+	}
 	
-	public GitCommand() {
+	private GitCommand() {
 		usernamePasswordCredentialsProvider = new UsernamePasswordCredentialsProvider(USR, PASSWORD);
 	}
 	

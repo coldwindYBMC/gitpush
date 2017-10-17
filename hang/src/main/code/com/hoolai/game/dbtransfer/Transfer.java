@@ -165,14 +165,15 @@ public class Transfer {
         }
     }
 
-    public static void exce(String[] args) throws SQLException, IOException {
+    public static void exce(String[] args,String version) throws SQLException, IOException {
         String file = args.length > 0 ? args[0] : System.getProperty("user.home");
-        String transferProperties = args.length > 1 ? args[1] : "transfer.properties";
+
+        	String  transferProperties = "transfer.properties";
+  
         Properties properties = new Properties();
 
         properties.load(new FileInputStream(getResource(transferProperties)));
-        
-        transfer(Conf.parseFrom(properties), file);
+        transfer(Conf.parseFrom(properties,version), file);
     }
 
     public static String getResource(String file) {

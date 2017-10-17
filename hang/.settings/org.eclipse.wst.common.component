@@ -4,6 +4,12 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/code"/>
+        <dependent-module archiveName="nebula-core-0.1.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/nebula-core/nebula-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="nebula-util-0.1.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/nebula-util/nebula-util">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="hang"/>
         <property name="java-output-path" value="/hang/target/classes"/>
     </wb-module>

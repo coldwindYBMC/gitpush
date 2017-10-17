@@ -21,16 +21,10 @@ public class UpdateResource {
 	public void svnCheckOut(String version) {
 		String cmd = null;
 		delFile();
-		switch (version) {
-		case "develop":
-//			branchcmd = new StringBuffer().append(PropertiesFile.getInstance().getProperty("svnBranch1")).toString();
-			cmd = new StringBuffer().append(PropertiesFile.getInstance().getProperty("svnCheckOut1")).toString();
-			break;
-		case "dev_1.6.0":
-//			branchcmd = new StringBuffer().append(PropertiesFile.getInstance().getProperty("svnBranch2")).toString();
-			cmd = new StringBuffer().append(PropertiesFile.getInstance().getProperty("svnCheckOut2")).toString();
-		}
 		
+		String svnco = new StringBuffer().append("svnCheckOut").append(version).toString();
+		
+		cmd = new StringBuffer().append(PropertiesFile.getInstance().getProperty(svnco)).toString();
 		try {
 			Process process = Runtime.getRuntime().exec(cmd);
 			System.out.println(cmd);
@@ -60,15 +54,15 @@ public class UpdateResource {
 		deleteFile(file1);
 		File file = new File(PropertiesFile.getInstance().getProperty("svnResAddress"));
 		deleteFile(file);
-		File file2 = new File(PropertiesFile.getInstance().getProperty("svntransferAddress"));
-		deleteFile(file2);
+//		File file2 = new File(PropertiesFile.getInstance().getProperty("svntransferAddress"));
+//		deleteFile(file2);
 		File file3 = new File(PropertiesFile.getInstance().getProperty("svningoredAddress"));
 		deleteFile(file3);
 	}
 	
 	//递归删除文件夹  
 	   private static void deleteFile(File file) { 
-		   System.out.println("删除："+file.getName());
+		 System.out.println("删除："+file.getName());
 	    if (file.exists()) {//判断文件是否存在  
 	     if (file.isFile()) {//判断是否是文件  
 	      file.delete();//删除文件   
