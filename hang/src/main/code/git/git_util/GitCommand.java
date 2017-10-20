@@ -16,8 +16,8 @@ public class GitCommand {
 	private final String USR = "zhangyuhang";
 	private final String PASSWORD = "yuhang1994.1118";
 	private static GitCommand instance = null;
-	private final UsernamePasswordCredentialsProvider usernamePasswordCredentialsProvider;
-	private final File repoFile;
+	private final UsernamePasswordCredentialsProvider usernamePasswordCredentialsProvider;//权限账号密码
+	private final File repoFile;//git所在的目录
 	private Git git;
 
 	public static synchronized GitCommand getInstance() {

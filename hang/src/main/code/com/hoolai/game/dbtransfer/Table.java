@@ -15,7 +15,10 @@ public class Table {
     public Table(String name) {
         this.name = name;
     }
-    
+    /***
+     * 得到表的某字段位置
+     * 
+     * */
     public int findColumnIndex(String columnName) {
         for (int i = 0; i < this.columns.size(); i++) {
             if(this.columns.get(i).name.equals(columnName)) {
@@ -34,6 +37,10 @@ public class Table {
         return null;
     }
     
+    /**
+     * 通过列，添加到每一个具体内容
+     * 
+     * */
     public void parseRecord(ResultSet rs) throws SQLException {
         Record record = new Record(this);
         for(int index = 1; index <= this.columns.size(); index++){
@@ -42,7 +49,10 @@ public class Table {
         }
         this.records.add(record);
     }
-
+    /**
+     *重写 tostring 方法，该方法记录了sqllite语句 
+     *
+     ***/
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

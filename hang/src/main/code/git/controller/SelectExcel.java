@@ -42,8 +42,8 @@ public class SelectExcel {
 		gitCommand.gitPull();
 
 		System.out.println("生成文件***************************" );
-		String[] args = { PropertiesFile.getInstance().getProperty("gitAddress") };
-		Transfer.exce(args, version);
+		String[] gitAddress = { PropertiesFile.getInstance().getProperty("gitAddress") };
+		Transfer.exce(gitAddress, version);
 
 		try {
 			gitCommand.gitAdd();
