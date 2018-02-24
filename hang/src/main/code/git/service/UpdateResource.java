@@ -54,10 +54,11 @@ public class UpdateResource {
 		deleteFile(file1);
 		File file = new File(PropertiesFile.getInstance().getProperty("svnResAddress"));
 		deleteFile(file);
-//		File file2 = new File(PropertiesFile.getInstance().getProperty("svntransferAddress"));
+//		File file2 = new File(PropertiesFile.getInstance().getProperty("svnexceltablesAddress"));
 //		deleteFile(file2);
 		File file3 = new File(PropertiesFile.getInstance().getProperty("svningoredAddress"));
 		deleteFile(file3);
+		
 	}
 	
 	//递归删除文件夹  

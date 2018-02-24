@@ -7,6 +7,6 @@
 </head>
 <body>
     <br>success<br>
-   
+  	<a href="http://10.0.2.4:8080/jenkins">点击这里进入打包界面</a>
 </body>
 </html>

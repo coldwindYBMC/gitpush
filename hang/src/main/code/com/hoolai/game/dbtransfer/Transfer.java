@@ -24,13 +24,14 @@ public class Transfer {
 	public static void transfer(Conf conf, String targetDir) throws SQLException, FileNotFoundException {
 		//链接数据库，记录每一个表的字段，数据
 		transfer0(conf);
-		//检测武将等那一块数据？
+		//检测、修正武将等那一块数据？
 		revisenpcavatar();
 		//检查campaignnode中的数据
 		//check();
 		savefile(targetDir);
 	}
 
+@SuppressWarnings("unused")
 	private static void check() {
 		Table cnode = findTable("t_s_campaignnode");
 		int nodeIDIndex = cnode.findColumnIndex("NodeId");
@@ -136,6 +137,12 @@ public class Transfer {
 		Iterator<Record> it = another.records.iterator();
 		while (it.hasNext()) {
 			Record next = it.next();
+			
+			if(next == null) {
+				System.out.println("next is null");
+			}
+			
+		
 			npcavatar.records.add(npcavatar.findRecordByValIdx(idx1, next.values.get(idx00)).copy()
 					.replaceValByIdx(idx1, next.values.get(idx01)).replaceValByIdx(idx2, next.values.get(idx02))
 					.replaceValByIdx(idx3, next.values.get(idx03)));
@@ -194,12 +201,12 @@ public class Transfer {
 		//得到git所在的的地址，如果没有参数,那么将sql文件默认生成才（"user.home"）文件夹下
 		String file = gitAddress.length > 0 ? gitAddress[0] : System.getProperty("user.home");
 
-		String transferProperties = "transfer.properties";
+		String transferProperties = "transfer.properties"; 
 		//主要用于读取Java的配置文件
 		Properties properties = new Properties();
 		//加载"transfer.properties"配置文件，
 		properties.load(new FileInputStream(getResource(transferProperties)));
-		//开始工作，Conf 配置数据库参数
+		//开始工作，Conf 配置数据库参数	
 		transfer(Conf.parseFrom(properties, version), file);
 	}
 

@@ -34,6 +34,7 @@ public class Table {
                 return record;
             }
         }
+        System.out.println("valIdx:"+valIdx+",val:"+val);
         return null;
     }
     
@@ -68,9 +69,9 @@ public class Table {
             sb.append(column.toString(ignoreKey));
             comma = true;
         }
-        sb.append(");");
+        sb.append(");");//以上是create命令，和drop命令
         
-        sb.append("\n");
+        sb.append("\n");//insert操作
         for (Record insert : this.records) {
             sb.append(insert).append("\n");
         }

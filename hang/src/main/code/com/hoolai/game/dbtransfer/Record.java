@@ -32,17 +32,17 @@ public class Record {
 
         StringBuilder sb = new StringBuilder();
         sb.append("INSERT INTO ").append(table.name).append(" VALUES (");
-        boolean comma = false;
+        boolean comma = false;//是否第一次，用来判断是否添加“，”
         for (int i = 0; i < values.size(); i++) {
-            Column column = table.columns.get(i);
-            if(column.isIgnored) continue;
+            Column column = table.columns.get(i);//列字段
+            if(column.isIgnored) continue;//该列字段是否被忽略
             if(comma) sb.append(",");
-            String val = values.get(i);
+            String val = values.get(i);//值
             if(val == null) {
-                sb.append("NULL");
-            } else if(column.type.equals("INTEGER")) {
+                sb.append("NULL");//为null
+            } else if(column.type.equals("INTEGER")) {//Integer
                 sb.append(val);
-            } else if(firstQuotationIsSingle(val)){
+            } else if(firstQuotationIsSingle(val)){//是单？双？引号
                 sb.append("\"").append(val).append("\"");
             } else {
                 sb.append("'").append(val).append("'");

@@ -2,6 +2,8 @@ package git.git_util;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.JGitInternalException;
@@ -107,6 +109,7 @@ public class GitCommand {
 	 * 本地仓库新增文件
 	 */
 	public void gitAdd() throws IOException, GitAPIException {
+		
 		getGit().add().addFilepattern(".").call();
 		System.out.println("add:" + repoFile.getAbsolutePath());
 	}

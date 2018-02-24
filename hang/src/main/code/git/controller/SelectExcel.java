@@ -23,12 +23,12 @@ public class SelectExcel {
 	public String list(Model model) throws SQLException, IOException {
 		return "excelselect";
 	}
-
+	
 	@RequestMapping(value = "push", method = RequestMethod.POST)
 	public synchronized String UploadSourceFile(Model model, String version)
 			throws IOException, SQLException, GitAPIException {
 		System.out.println(version);
-		
+	
 		if (version.equals("")) {
 			System.out.println("版本为空");
 			return "error";
@@ -37,22 +37,17 @@ public class SelectExcel {
 		upResource.svnCheckOut(version);
 		
 		GitCommand gitCommand = GitCommand.getInstance();
-
 		gitCommand.gitCheckout(version);
 		gitCommand.gitPull();
-
-		System.out.println("生成文件***************************" );
+		
+		System.out.println("生成文件***************************");
 		String[] gitAddress = { PropertiesFile.getInstance().getProperty("gitAddress") };
 		Transfer.exce(gitAddress, version);
+		
+		gitCommand.gitAdd();
+		gitCommand.gitCommit();
+		gitCommand.gitPush();
 
-		try {
-			gitCommand.gitAdd();
-			gitCommand.gitCommit();
-			gitCommand.gitPush();
-		} catch (GitAPIException e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
 		return "success";
 	}
 
